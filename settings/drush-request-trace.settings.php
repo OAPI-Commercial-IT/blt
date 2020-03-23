@@ -16,7 +16,7 @@ if (getenv('AH_SITE_ENVIRONMENT') && PHP_SAPI === 'cli') {
   // Set the `request method`.
   putenv('REQUEST_METHOD=CLI');
   // Set the `domain`.
-  putenv('HTTP_HOST=' . $_SERVER['HTTP_HOST']);
+  // Patch comment out putenv('HTTP_HOST=' . $_SERVER['HTTP_HOST']);.
 
   if (function_exists('drush_get_context')) {
     $cli_args = $GLOBALS['argv'];
