@@ -1,0 +1,26 @@
+From 10b0d5df23153af502827c719abeb47a4ee59df9 Mon Sep 17 00:00:00 2001
+From: "Anson W. Han" <ansonwhan@1470576.no-reply.drupal.org>
+Date: Mon, 23 Mar 2020 15:02:23 -0400
+Subject: [PATCH] Per Acquia recommendation, commenting out offending line in
+ BLT for ACSF dev deployments to bypass warning.
+
+---
+ settings/drush-request-trace.settings.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/settings/drush-request-trace.settings.php b/settings/drush-request-trace.settings.php
+index a923cafd..15d35135 100644
+--- a/settings/drush-request-trace.settings.php
++++ b/settings/drush-request-trace.settings.php
+@@ -16,7 +16,7 @@ if (getenv('AH_SITE_ENVIRONMENT') && PHP_SAPI === 'cli') {
+   // Set the `request method`.
+   putenv('REQUEST_METHOD=CLI');
+   // Set the `domain`.
+-  putenv('HTTP_HOST=' . $_SERVER['HTTP_HOST']);
++  // Patch comment out putenv('HTTP_HOST=' . $_SERVER['HTTP_HOST']);.
+ 
+   if (function_exists('drush_get_context')) {
+     $cli_args = $GLOBALS['argv'];
+-- 
+2.15.0
+
